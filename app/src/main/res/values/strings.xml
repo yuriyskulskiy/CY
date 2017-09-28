@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">CropioYield</string>
+    <string name="app_name">Cropoio Yield</string>
+    <string name="login">login</string>
+    <string name="password">password</string>
+    <string name="enter">Enter</string>
+    <string name="title_activity_top_level">TopLevelActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="login_layout_enter_email">Enter email</string>
+    <string name="login_layout_enter_password">Enter password</string>
+    <string name="cropio_logotype">CROPIO</string>
+    <string name="login_btn">ENTER</string>
+    <string name="web_login_back">Back</string>
 </resources>

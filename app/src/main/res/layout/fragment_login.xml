@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <com.nst.cropio.yield.view.RobotoFontEditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:gravity="start|bottom"
+        android:hint="@string/login_layout_enter_email"
+        android:imeOptions="actionNext"
+        android:inputType="textEmailAddress"
+
+        android:textColor="@color/login_text"
+        android:textColorHint="@color/hint_text"
+        android:theme="@style/EditTextTheme"
+        android:textSize="@dimen/primary_text_size"
+        app:et_robotoFont="roboto_regular"
+        />
+
+
+    <com.marlonmafra.android.widget.EditTextPassword
+        android:theme="@style/EditTextTheme"
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="start|bottom"
+        android:hint="@string/login_layout_enter_password"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:textColor="@color/login_text"
+        android:textColorHint="@color/hint_text"
+        android:textSize="@dimen/primary_text_size"
+        app:fontPath="fonts/Roboto-Regular.ttf"
+        app:hidePasswordIcon="@drawable/ic_visibility_on"
+        app:iconPosition="right"
+        app:showPasswordIcon="@drawable/ic_visibility_off_standart" />
+
+
+
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnLoggin"
+            android:layout_width="148dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="52dp"
+            android:background="@drawable/round_corners"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:text="@string/login_btn"
+            android:textColor="@color/login_text"
+            android:textSize="@dimen/primary_text_size" />
+
+
+
+
+
+</LinearLayout>
