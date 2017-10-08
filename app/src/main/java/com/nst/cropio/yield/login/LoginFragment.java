@@ -123,8 +123,8 @@ public class LoginFragment extends Fragment {
     }
 
 
-    //-------------
-    private String getLogin() {
+
+    public String getLogin() {
         return emailEt.getText().toString();
     }
 

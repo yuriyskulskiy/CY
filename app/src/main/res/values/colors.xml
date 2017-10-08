@@ -18,4 +18,6 @@
     <color name="hint_text">#bbcbd2</color>
     <color name="login_text">#ffffff</color>
     <color name="login_edit_text_not_focus_underline">#b6cad3</color>
+
+    <color name="navigation_not_selected">#747474</color>
 </resources>

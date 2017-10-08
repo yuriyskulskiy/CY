@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.nst.cropio.yield.R;
 import com.nst.cropio.yield.network.LoginResponse;
+import com.nst.cropio.yield.top.TopLevelActivity;
 import com.nst.cropio.yield.util.SharedPrefManager;
 
 import static com.nst.cropio.yield.login.WebActivity.REQUEST_CODE;
@@ -31,7 +32,7 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Re
     private static final String KEY_EMAIL = "email";
     private static final String KEY_PASSWORD = "password";
 
-    private String loginStr, passwordStr;
+    LoginFragment loginFragment;
     private LoginResponse savedResponse;
 
     @Override
@@ -50,23 +51,23 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Re
             return;
         }
 
-        LoginFragment loginFragmnent = LoginFragment.newInstance("zaglushka", "zaglushka");
+        loginFragment = LoginFragment.newInstance("zaglushka", "zaglushka");  //todo remove params
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, loginFragmnent).commit();
+                .add(R.id.fragment_container, loginFragment).commit();
 
 
     }
 
 
     private void startTopLevelActivity() {
-//        int flags = Intent.FLAG_ACTIVITY_CLEAR_TOP |
-//                Intent.FLAG_ACTIVITY_CLEAR_TASK |
-//                Intent.FLAG_ACTIVITY_NEW_TASK;
-//        Intent intent = new Intent(this, TopLevelActivity.class);
-//        intent.setFlags(flags);
-//        this.startActivity(intent);
-//        this.finish();
-        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        int flags = Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                Intent.FLAG_ACTIVITY_NEW_TASK;
+        Intent intent = new Intent(this, TopLevelActivity.class);
+        intent.setFlags(flags);
+        this.startActivity(intent);
+        this.finish();
+
     }
 
     private void onSignIn(LoginResponse response) {
@@ -74,8 +75,9 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Re
         if (!checkOutPermission(LoginActivity.this, STORAGE_CODE)) {
             askPermission(LoginActivity.this, STORAGE_CODE);
         } else {
-//            launchDownloadTask(response);
-            Log.e("tag", " launchDownloadTask from onSignIn");
+            DownloadManager.saveAccountData(response, loginFragment.getLogin());
+            Log.e("tag", " DownloadManager.saveAccountData and run topLevelActivity");
+            startTopLevelActivity();
         }
     }
 
@@ -88,7 +90,8 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Re
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-//                    launchDownloadTask(savedResponse); //// TODO: 9/26/17
+                    DownloadManager.saveAccountData(savedResponse, loginFragment.getLogin());
+                    startTopLevelActivity();
 
                     Log.e("tag", " launchDownloadTask from onReqPerm");
                     // permission was granted, yay! Do the
@@ -113,9 +116,6 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Re
         onSignIn(loginResponse);
     }
 
-    public void onLogginButton(View v) {
-        Log.e("tag", "on loggin from activity");
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

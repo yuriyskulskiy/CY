@@ -12,17 +12,19 @@ import com.nst.cropio.yield.YieldApplication;
 
 public class SharedPrefManager {
 
-    private static String IS_LOGGED_IN = "is_logged_in";
+    private static final String IS_LOGGED_IN = "is_logged_in";
     private static final String USER_EMAIL = "user_email";
     private static final String COMPANY = "company";
     private static final String AUTH_TOKEN = "auth_token";
     private static final String USER_ID = "user_id";
+    private static final String LANGUAGE = "language";
+
 
     private static SharedPrefManager sInstance;
-    private static SharedPreferences mPreferences;
+    private final SharedPreferences sharedPreferences;
 
     private SharedPrefManager() {
-        mPreferences = PreferenceManager.getDefaultSharedPreferences(YieldApplication.get());
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(YieldApplication.get());
     }
 
     public static SharedPrefManager get() {
@@ -40,22 +42,34 @@ public class SharedPrefManager {
         putBoolean(IS_LOGGED_IN, isLoggedIn);
     }
 
+
     public String getUserEmail() {
         return getString(USER_EMAIL, null);
-    }
-
-    @Nullable
-    public String getCompany() {
-        return getString(COMPANY, null);
     }
 
     public void addUserEmail(String email) {
         putString(USER_EMAIL, email);
     }
 
+
+    @Nullable
+    public String getCompany() {
+        return getString(COMPANY, null);
+    }
+
+    public void addCompany(String company) {
+        putString(COMPANY, company);
+    }
+
+
     public void addToken(String token) {
         putString(AUTH_TOKEN, token);
     }
+
+    public String getAuthToken() {
+        return getByKey(AUTH_TOKEN);
+    }
+
 
     public void addUser_id(String user_id) {
         putString(USER_ID, user_id);
@@ -66,32 +80,46 @@ public class SharedPrefManager {
     }
 
 
+    public void addLanguage(String language) {
+        putString(LANGUAGE, language);
+    }
 
+    public String getLanguage() {
+        String language = getByKey(LANGUAGE);
+        if (language.equals("en")
+                || language.equals("es")
+                || language.equals("ru")
+                || language.equals("uk")
+                || language.equals("hu")
+                || language.equals("de")) {
+            return language;
+        } else {
+            return "en";
+        }
+    }
 
-
-
-
-
-
+    private String getByKey(String key) {
+        return sharedPreferences.getString(key, "en");
+    }
 
 
     private void putBoolean(String key, boolean value) {
-        SharedPreferences.Editor editor = mPreferences.edit();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(key, value);
         editor.apply();
     }
 
     private boolean getBoolean(String key, boolean defValue) {
-        return mPreferences.getBoolean(key, defValue);
+        return sharedPreferences.getBoolean(key, defValue);
     }
 
     private void putString(String key, String value) {
-        SharedPreferences.Editor editor = mPreferences.edit();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(key, value);
         editor.apply();
     }
 
     private String getString(String key, String defValue) {
-        return mPreferences.getString(key, defValue);
+        return sharedPreferences.getString(key, defValue);
     }
 }

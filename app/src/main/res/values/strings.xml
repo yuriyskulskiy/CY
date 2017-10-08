@@ -3,10 +3,11 @@
     <string name="login">login</string>
     <string name="password">password</string>
     <string name="enter">Enter</string>
-    <string name="title_activity_top_level">TopLevelActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+
+    <string name="title_activity_top_level">Productivity</string>
+    <string name="title_estimation">Estimation</string>
+    <string name="title_harvest">Harvest</string>
+    <string name="title_market">Market</string>
 
     <string name="login_layout_enter_email">Enter email</string>
     <string name="login_layout_enter_password">Enter password</string>

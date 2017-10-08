@@ -23,7 +23,10 @@ import android.webkit.WebViewClient;
 import com.nst.cropio.yield.R;
 import com.nst.cropio.yield.network.LoginResponse;
 
+import java.util.Set;
+
 public class WebActivity extends AppCompatActivity {
+
     WebView webView;
     private static final String EXTRA_URL = "url";
     static final int REQUEST_CODE = 1;
@@ -32,6 +35,7 @@ public class WebActivity extends AppCompatActivity {
     public static final String USER_API_TOKEN_EXTRA = "user_api_token";
     public static final String LANGUAGE_EXTRA = "language_extra";
     public static final String COMAPNY_EXTRA = "company_extra";
+    private static final String USER_ID = "user_id";
 
 
     public static void startWebActivity(String url, Context activity) {
@@ -116,19 +120,17 @@ public class WebActivity extends AppCompatActivity {
                 Uri uri = Uri.parse(url);
                 String schema = uri.getScheme().toLowerCase();
                 if (schema.equals("cropioapp")) {
-//                    LoginResponse response = new LoginResponse();
-//                    response.setSuccess(Boolean.parseBoolean(uri.getQueryParameter("success")));
-//                    response.setCompany_name(uri.getQueryParameter("company"));
-//                    response.setLanguage(uri.getQueryParameter("language"));
-//                    response.setUser_api_token(uri.getQueryParameter("user_api_token"));
                     Intent intent = new Intent();
 
                     boolean successResult = Boolean.parseBoolean(uri.getQueryParameter("success"));
                     String companyName = uri.getQueryParameter("company");
                     String language = uri.getQueryParameter("language");
                     String userApiToken = uri.getQueryParameter("user_api_token");
-                    putToIntentAgroinvestData(intent, successResult, companyName, language, userApiToken);
-
+                    String userId = uri.getQueryParameter("user_id");
+                    putToIntentAgroinvestData(intent, successResult, companyName, language, userApiToken,userId);
+//                    Set<String>  queryParameterNames= uri.getQueryParameterNames();
+//                   String resultSet = queryParameterNames.toString();
+//                    Log.e("set",resultSet);
                     setResult(RESULT_OK, intent);
                     finish();
                     return true;
@@ -153,11 +155,12 @@ public class WebActivity extends AppCompatActivity {
 
     }
 
-    public static void putToIntentAgroinvestData(Intent i, Boolean success, String company, String language, String userApiToken) {
+    public static void putToIntentAgroinvestData(Intent i, Boolean success, String company, String language, String userApiToken,String userId) {
         i.putExtra(SUCCESS_EXTRA, success);
         i.putExtra(COMAPNY_EXTRA, company);
         i.putExtra(LANGUAGE_EXTRA, language);
         i.putExtra(USER_API_TOKEN_EXTRA, userApiToken);
+        i.putExtra(USER_ID, userId);
     }
 
     public static LoginResponse getAgroinvestDataAsResponse(Intent intent) {
@@ -166,6 +169,7 @@ public class WebActivity extends AppCompatActivity {
         response.setCompany_name(intent.getStringExtra(COMAPNY_EXTRA));
         response.setLanguage(intent.getStringExtra(LANGUAGE_EXTRA));
         response.setUser_api_token(intent.getStringExtra(USER_API_TOKEN_EXTRA));
+        response.setUser_id(intent.getStringExtra(USER_ID));
         return response;
     }
 }
