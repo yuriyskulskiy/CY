@@ -3,4 +3,6 @@
     <string name="title_estimation">Оценка</string>
     <string name="title_harvest">Урожай</string>
     <string name="title_market">Рынок</string>
+    <string name="menu_season">asd</string>
+    <string name="menu_user">Пользователь</string>
 </resources>

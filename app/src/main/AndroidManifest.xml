@@ -30,7 +30,10 @@
             android:name=".login.WebActivity"
             android:label="Агроинвест login page"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".top.TopLevelActivity"
+            android:label="@string/title_activity_top_level"></activity>
     </application>
 
 </manifest> <!-- android:theme="@style/Theme.AppCompat.NoActionBar" -->

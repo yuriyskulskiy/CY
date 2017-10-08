@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -45,5 +46,33 @@ public class TopLevelActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.top_level_activity_menu, menu);
+
+//        loadAvatarImage(menu);
+
+        return true;
+    }
+
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+
+//        switch (item.getItemId()) {
+//            case R.id.menu_search:
+//                SearchActivity.start(this);
+//                break;
+//            case R.id.menu_season:
+//                showSeasonsPicker();
+//                break;
+//
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+
+//        return true;
+//    }
 
 }

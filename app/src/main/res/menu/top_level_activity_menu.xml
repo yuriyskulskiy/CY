@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_season"
+        android:icon="@drawable/ic_calendar"
+        android:title="@string/menu_season"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/menu_user"
+        android:title="@string/menu_user"
+        app:actionLayout="@layout/top_view_menu_user"
+        app:showAsAction="always"
+        />
+
+</menu>
