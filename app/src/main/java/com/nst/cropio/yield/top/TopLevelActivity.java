@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.nst.cropio.yield.R;
 
+
 public class TopLevelActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
@@ -22,6 +23,9 @@ public class TopLevelActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     mTextMessage.setText(R.string.title_estimation);
+
+
+
                     return true;
                 case R.id.navigation_dashboard:
                     mTextMessage.setText(R.string.title_harvest);
