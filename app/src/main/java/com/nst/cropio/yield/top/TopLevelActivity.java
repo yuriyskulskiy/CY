@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.nst.cropio.yield.R;
 
-import static java.lang.Thread.sleep;
+
 
 
 public class TopLevelActivity extends AppCompatActivity {
@@ -60,12 +60,12 @@ public class TopLevelActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.top_level_activity_menu, menu);
 
-//        loadAvatarImage(menu);
+//        loadAvatarImage(menu);  todo
 
         return true;
     }
 
-
+    //todo
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -83,5 +83,8 @@ public class TopLevelActivity extends AppCompatActivity {
 
 //        return true;
 //    }
+
+
+
 
 }
