@@ -16,4 +16,5 @@
     <string name="web_login_back">Back</string>
     <string name="menu_season">Сезон</string>
     <string name="menu_user">User</string>
+    <string name="title_activity_basic">Basic</string>
 </resources>

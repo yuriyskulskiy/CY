@@ -6,14 +6,15 @@
         android:id="@+id/menu_season"
         android:icon="@drawable/ic_calendar"
         android:title="@string/menu_season"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom"
         />
 
     <item
         android:id="@+id/menu_user"
         android:title="@string/menu_user"
-        app:actionLayout="@layout/top_view_menu_user"
-        app:showAsAction="always"
+        android:icon="@drawable/ic_info_user"
+        app:showAsAction="ifRoom"
         />
+    <!--app:actionLayout="@layout/top_view_menu_user"-->
 
 </menu>

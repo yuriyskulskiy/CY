@@ -1,14 +1,19 @@
 package com.nst.cropio.yield.top;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+
 import com.nst.cropio.yield.R;
+
+import static java.lang.Thread.sleep;
 
 
 public class TopLevelActivity extends AppCompatActivity {
